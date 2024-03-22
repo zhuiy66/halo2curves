@@ -27,6 +27,7 @@ use crate::{
 };
 use core::convert::TryInto;
 use core::fmt;
+use core::fmt::Display;
 use core::ops::{Add, Mul, Neg, Sub};
 use rand::RngCore;
 use subtle::{Choice, ConditionallySelectable, ConstantTimeEq, CtOption};
@@ -186,6 +187,13 @@ impl From<u64> for Fr {
         } else {
             Fr([val, 0, 0, 0]) * R2
         }
+    }
+}
+
+//tmp. delete it later
+impl Display for Fr{
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "[{}, {}, {}, {})]", self.0[0], self.0[1],self.0[2],self.0[3])
     }
 }
 
